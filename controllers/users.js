@@ -90,9 +90,14 @@ const login = (req, res, next) => {
     });
 };
 
+const logout = (req, res) => {
+  res.clearCookie('jwt').send({ message: 'Выход пользователя из профиля прошел успешно' });
+};
+
 module.exports = {
   createUser,
   getUserInfo,
   updateUserInfo,
   login,
+  logout,
 };
