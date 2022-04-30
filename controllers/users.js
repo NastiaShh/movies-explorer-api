@@ -9,13 +9,7 @@ const UnauthorizedError = require('../errors/UnauthorizedError');
 
 const createUser = (req, res, next) => {
   const { name, email, password } = req.body;
-  User.findOne({ email })
-    .then((user) => {
-      if (user) {
-        throw new ConflictError();
-      }
-      return bcrypt.hash(password, 10);
-    })
+  bcrypt.hash(password, 10)
     .then((hash) => User.create({
       name,
       email,
@@ -28,6 +22,8 @@ const createUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new ValidationError());
+      } if (err.code === 11000) {
+        next(new ConflictError());
       } else {
         next(err);
       }
@@ -41,7 +37,7 @@ const getUserInfo = (req, res, next) => {
     })
     .then((data) => res.send(data))
     .catch((err) => {
-      if (err.name === 'ValidationError' || err.name === 'CastError') {
+      if (err.name === 'ValidationError') {
         next(new ValidationError());
       } else {
         next(err);
@@ -60,8 +56,10 @@ const updateUserInfo = (req, res, next) => {
     })
     .then((data) => res.send(data))
     .catch((err) => {
-      if (err.name === 'ValidationError' || err.name === 'CastError') {
+      if (err.name === 'ValidationError') {
         next(new ValidationError());
+      } if (err.code === 11000) {
+        next(new ConflictError());
       } else {
         next(err);
       }
