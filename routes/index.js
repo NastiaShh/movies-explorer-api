@@ -6,10 +6,10 @@ const NotFoundError = require('../errors/NotFoundError');
 
 router.post('/signup', validateRegister, createUser);
 router.post('/signin', validateLogin, login);
-router.post('/signout', logout);
 
 router.use(auth);
 
+router.post('/signout', logout);
 router.use('/users', require('./users'));
 router.use('/movies', require('./movies'));
 
