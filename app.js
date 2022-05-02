@@ -12,6 +12,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const rateLimiter = require('./middlewares/rateLimiter');
 
 const { PORT = 3000 } = process.env;
+const { NODE_ENV, BASE_URL } = process.env;
 const app = express();
 
 app.use(cors({
@@ -42,7 +43,7 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
-mongoose.connect('mongodb://localhost:27017/moviesdb', {
+mongoose.connect(NODE_ENV === 'production' ? BASE_URL : 'mongodb://localhost:27017/moviesdb', {
   useNewUrlParser: true,
 });
 
