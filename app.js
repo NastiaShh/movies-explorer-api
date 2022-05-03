@@ -34,7 +34,7 @@ app.use(requestLogger);
 
 app.use(cookieParser());
 app.use(helmet());
-app.use(rateLimiter());
+app.use(rateLimiter);
 
 app.use(router);
 
