@@ -9,7 +9,7 @@ const cors = require('cors');
 const router = require('./routes/index');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const rateLimiter = require('./middlewares/rateLimiter');
+// const rateLimiter = require('./middlewares/rateLimiter');
 
 const { PORT = 3000 } = process.env;
 const { NODE_ENV, DB_PATH } = process.env;
@@ -34,7 +34,7 @@ app.use(requestLogger);
 
 app.use(cookieParser());
 app.use(helmet());
-app.use(rateLimiter);
+// app.use(rateLimiter);
 
 app.use(router);
 
