@@ -1,14 +1,16 @@
 # movies-explorer-api
 Бэкенд для дипломного проекта Movies Explorer.
 
+[Репозиторий с фронтендом проекта](https://github.com/NastiaShh/movies-explorer-frontend)
+
+[Публичный адрес готового проекта](https://movies-explorer.nsh.nomoredomains.work)
+
+[Ссылка на макет в Figma](https://www.figma.com/file/GGYpV4d6I5TvEDjR0SdR4B/Diploma-(Copy))
+
 Movies Explorer - сервис, в котором можно найти фильмы по запросу и сохранить в личном кабинете.
 
 В данном проекте реализовано API для аутентификации пользователей и сохранения фильмов. 
 Выполнен на курсе *Веб-разработки Яндекс.Практикума.*
-
-Проект доступен по адресу: https://api.movies-explorer.nsh.nomoredomains.work/api
-
-
 ## Запуск проекта
 
 `npm run start` — запускает сервер   
